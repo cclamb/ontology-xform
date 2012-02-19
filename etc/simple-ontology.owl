@@ -30,6 +30,10 @@
      -->
 
     
+	<!-- Test Class -->
+	<owl:Class ref:about="Car">
+		<rdfs:subClassOf rdf:resource="Machine" />
+	</owl:Class>
 
 
     <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology1329225154941.owl#Car -->
