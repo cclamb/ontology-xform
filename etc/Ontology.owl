@@ -1,0 +1,250 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#"
+     xml:base="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#isGreaterThan -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#isGreaterThan"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#isLowerThan -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#isLowerThan"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Context -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Context"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Device -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Device">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Environment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Domain -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Domain"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Environment -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Environment">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Context"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#JWICS -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#JWICS">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#isLowerThan"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#NASNet"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#isGreaterThan"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#NIPRNet"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#SecurityDomain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#NASNet -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#NASNet">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#isGreaterThan"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#JWICS"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#SecurityDomain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#NIPRNet -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#NIPRNet">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#isLowerThan"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#SIPRNet"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#SecurityDomain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#OS -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#OS">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Environment"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Project -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Project">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Subject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Role -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Role">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Subject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#SIPRNet -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#SIPRNet">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#isGreaterThan"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#NIPRNet"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#isLowerThan"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#JWICS"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#SecurityDomain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Secret -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Secret">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#isGreaterThan"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Unclassified"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#SecurityClassification"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#SecurityClassification -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#SecurityClassification">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Domain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#SecurityDomain -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#SecurityDomain">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Domain"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Subject -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Subject">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Context"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Top_Secret -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Top_Secret">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#isGreaterThan"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Secret"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#isLowerThan"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Top_Secret"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#SecurityClassification"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Unclassified -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Unclassified">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#isLowerThan"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Secret"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#SecurityClassification"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.5.1912) http://owlapi.sourceforge.net -->
+
