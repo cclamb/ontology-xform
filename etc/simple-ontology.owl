@@ -29,7 +29,19 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
+	<owl:Class rdf:about="Subject"/>
+
+
+	<owl:Class ref:about="Role">
+		<rdfs:subClassOf rdf:resource="Subject" />
+	</owl:Class>
+
+	<owl:Class ref:about="Project">
+		<rdfs:subClassOf rdf:resource="Subject" />
+	</owl:Class>
+
+
 
 
     <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology1329225154941.owl#Car -->
