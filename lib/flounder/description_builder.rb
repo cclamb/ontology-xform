@@ -1,9 +1,8 @@
 require 'nokogiri'
-include Nokogiri
 
 module Flounder
 	
-	class Ontology < XML::SAX::Document
+	class Ontology < Nokogiri::XML::SAX::Document
 		def initialize		
 			@element = Hash.new
 			@properties = Array.new
@@ -12,6 +11,7 @@ module Flounder
 
 		
 		def start_element(name, attributes)
+      puts "  ==> Name: #{name}  Attributes: #{attributes}\n"
 			case name
 				when 'owl:Class'
 					@element[:name] = attributes[0][1]
@@ -36,12 +36,12 @@ module Flounder
 		def end_document
 			@description = "#Listing Entities\n"	
 			@entities.each {|e|
-				@description = @description + self.build_entity(e)
+				@description = @description + build_entity(e)
 			}
 			@description = @description + "#Listing Properties\n"
 			@properties.each {|p|
 				if @entities.include?(p[:parent]) == true
-					@description = @description + self.build_empty_property(p[:name])
+					@description = @description + build_empty_property(p[:name])
 				end
 			}
 			File.open('ontological description.rb', 'w') {|f| f.write(@description) }
@@ -63,7 +63,7 @@ module Flounder
 	class DescriptionBuilder
 		def initialize(ont)
 			@loc = ont
-			@par = XML::SAX::Parser.new(Ontology.new)
+			@par = Nokogiri::XML::SAX::Parser.new(Ontology.new)
 		end
 
 		def generate_description
@@ -80,33 +80,3 @@ end
 #test = Flounder::DescriptionBuilder.new('../../etc/Ontology2.owl')
 test = Flounder::DescriptionBuilder.new('../../etc/simple-ontology.owl')
 test.generate_description
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
