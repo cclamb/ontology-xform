@@ -12,6 +12,9 @@ class Dispatcher < Nokogiri::XML::SAX::Document
 
 end
 
-parser = Nokogiri::XML::SAX::Parser.new Dispatcher.new
-parser.parse_file 'simple-ontology.owl'
+#parser = Nokogiri::XML::SAX::Parser.new Dispatcher.new
+#parser.parse_file 'simple-ontology.owl'
 #parser.parse File.read 'simple-ontology.owl'
+
+doc = Nokogiri::XML 'simple-ontology.owl'
+puts doc.to_s
