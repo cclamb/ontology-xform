@@ -1,21 +1,26 @@
 require 'nokogiri'
 
-class Dispatcher < Nokogiri::XML::SAX::Document
-
-  def start_element(name, attributes)
-    puts "Name: <#{name}> Attributes: <#{attributes}>\n"
+def process_element(clz)
+  
+  puts "Attributes: #{clz.attributes.size}\n"
+  clz.attributes.each do |key, value|
+    puts "\t<#{key}, #{value}>\n"
   end
 
-  def error(msg)
-    puts "ERROR! ==> #{msg}\n"
+  puts "Elements: #{clz.children.size}\n"
+  clz.children.each do |child|
+    puts "--- <#{child.name}> ---\n"
+    process_element child
+    puts "--- end <#{child.name}> ---\n"
   end
-
+  
 end
 
-#parser = Nokogiri::XML::SAX::Parser.new Dispatcher.new
-#parser.parse_file 'simple-ontology.owl'
-#parser.parse File.read 'simple-ontology.owl'
-
-doc = Nokogiri::XML 'simple-ontology.owl'
-doc.remove_namespaces!
-puts "#{doc.xpath('//Class').to_s}"
+xml = File.read 'simple-ontology.owl'
+doc = Nokogiri::XML xml
+clz = doc.xpath '//owl:Class'
+clz.each do |clz|
+  puts "\n\n<=== Begin Class <#{clz.name}> ===>"
+  process_element clz
+  puts "<=== End Class <#{clz.name} ===>"
+end
