@@ -17,4 +17,5 @@ end
 #parser.parse File.read 'simple-ontology.owl'
 
 doc = Nokogiri::XML 'simple-ontology.owl'
-puts doc.to_s
+doc.remove_namespaces!
+puts "#{doc.xpath('//Class').to_s}"
