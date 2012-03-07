@@ -4,8 +4,7 @@ module Flounder
 
   class Parser
 
-    def initialize event_adapter
-      @event_adapter = event_adapter
+    def initialize
       @elements = {}
     end
 
@@ -18,13 +17,14 @@ module Flounder
     private
 
     def parse_classes
-      clz = @doc.path '//owl:Class'
-      attribs = {}
-      clz.attributes.each do |key, value|
-        attribs.put[key] = vale
-      end
+      clz = @doc.xpath '//owl:Class'
       clz.each do |c|
-        @elements.put[c.name] = attribs
+        attribs = {}
+        c.attributes.each do |key, value|
+          attribs[key.to_sym] = value.to_s
+        end
+        full_type_name = attribs[:about]
+        @elements[full_type_name.to_sym] = attribs
       end
     end
 
