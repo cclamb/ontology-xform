@@ -1,11 +1,11 @@
 require 'rspec'
 
-require_relative '../../lib/flounder/description_builder'
+require_relative '../../lib/flounder/parser'
 
-describe Flounder::DescriptionBuilder do
+describe Flounder::Parser do
 
   it 'should be creatable' do
-    builder = Flounder::DescriptionBuilder.new
+    builder = Flounder::Parser.new Object.new
     builder.should_not eq(nil)
   end
   
@@ -13,5 +13,3 @@ describe Flounder::DescriptionBuilder do
   it 'should create properties when relationships are discovered'
 
 end
-
-

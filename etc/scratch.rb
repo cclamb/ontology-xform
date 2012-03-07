@@ -15,6 +15,7 @@ end
 def process_element clz
   
   puts "Attributes: #{clz.attributes.size}\n"
+  puts clz.attributes
   clz.attributes.each do |key, value|
     puts "\t<#{key}, #{value}>\n"
   end
