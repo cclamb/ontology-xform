@@ -2,19 +2,19 @@ require 'rspec'
 
 require_relative '../../lib/flounder/parser'
 
-Simple_Test = {
+simple_test = {
   :filename => 'etc/simple-ontology.owl',
   :element_size => 6,
   :structure_size => 4
 }
 
-Complex_Test = {
+complex_test = {
   :filename => 'etc/Ontology.owl',
   :element_size => 17,
   :structure_size => 15 
 }
 
-Complex_Test_2 = {
+complex_test_2 = {
   :filename => 'etc/Ontology2.owl',
   :element_size => 17,
   :structure_size => 15 
@@ -45,38 +45,38 @@ describe Flounder::Parser do
     builder.should_not eq nil
   end
 
-  context 'Simple Ontology (simple-ontology.owl)' do
+  context 'with a Simple Ontology (simple-ontology.owl)' do
       
     it 'should return unstructured elements with their attributes' do
-      elements_test Simple_Test[:filename], Simple_Test[:element_size]
+      elements_test simple_test[:filename], simple_test[:element_size]
     end
 
     it 'should return structure information keyed by class name' do
-      structure_test Simple_Test[:filename], Simple_Test[:structure_size]
+      structure_test simple_test[:filename], simple_test[:structure_size]
     end
 
   end
 
-  context 'Complex Ontology (Ontology.owl)' do
+  context 'with a complex Ontology (Ontology.owl)' do
 
     it 'should return unstructured elements with their attributes' do
-      elements_test Complex_Test[:filename], Complex_Test[:element_size]
+      elements_test complex_test[:filename], complex_test[:element_size]
     end
 
     it 'should return structure information keyed by class name' do
-      structure_test Complex_Test[:filename], Complex_Test[:structure_size]
+      structure_test complex_test[:filename], complex_test[:structure_size]
     end
 
   end
 
-  context 'Complex Ontology (Ontology2.owl)' do
+  context 'with a complex Ontology (Ontology2.owl)' do
 
     it 'should return unstructured elements with their attributes' do
-      elements_test Complex_Test_2[:filename], Complex_Test_2[:element_size]
+      elements_test complex_test_2[:filename], complex_test_2[:element_size]
     end
 
     it 'should return structure information keyed by class name' do
-      structure_test Complex_Test_2[:filename], Complex_Test_2[:structure_size]
+      structure_test complex_test_2[:filename], complex_test_2[:structure_size]
     end
 
   end
