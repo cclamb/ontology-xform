@@ -19,3 +19,48 @@ elements.each do |k,v|
   print "\n\n"
   print "#{v}\n\n"
 end
+
+class ModuleGenerator
+
+  attr_accessor :name, :elements
+
+  def initialize
+    yield self if block_given?
+  end
+
+  def generate
+    print "module #{name}\n\n"
+    elements.each { |e| e.generate }
+    print "\n\nend\n\n"
+  end
+
+end
+
+class ClassGenerator
+
+  attr_accessor :name, :parent
+
+  def initialize
+    yield self if block_given?
+  end
+
+  def generate
+    print "class #{name}"
+    print " < #{parent}" if parent
+    print "\n"
+    print "\n\nend"
+  end
+
+end
+
+g = ClassGenerator.new do |ctx|
+  ctx.name = 'Name'
+  ctx.parent = 'Parent'
+end
+
+m = ModuleGenerator.new do |ctx|
+  ctx.name = 'ModuleName'
+  ctx.elements = [g]
+end
+
+m.generate
