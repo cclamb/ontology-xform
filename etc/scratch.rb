@@ -30,10 +30,10 @@ class ModuleGenerator
     yield self if block_given?
   end
 
-  def generate
-    print "module #{name}\n\n"
-    elements.each { |e| e.generate }
-    print "end\n\n"
+  def generate str, indent = 0
+    indent.times { str << "\t" } ; str << "module #{name}\n"
+    elements.each { |e| e.generate str, indent + 1 }
+    indent.times { str << "\t" } ; str << "end\n"
   end
 
 end
@@ -48,10 +48,10 @@ class MethodGenerator
     yield self if block_given?
   end
 
-  def generate
-    print "def #{name}\n"
-    instructions.each { |i| print "\t#{i}\n"}
-    print "end\n\n"
+  def generate str, indent = 0
+    indent.times { str << "\t" } ; str << "def #{name}\n"
+    instructions.each { |i| indent.times { str << "\t" } ; str << "\t#{i}\n" }
+    indent.times { str << "\t" }; str << "end\n"
   end
 
 end
@@ -67,12 +67,14 @@ class ClassGenerator
     yield self if block_given?
   end
 
-  def generate
-    print "class #{name}"
-    print " < #{parent}" if parent
-    print "\n"
-    print "\tinclude #{included_module.name}" if included_module
-    print "\n\nend\n\n"
+  def generate str, indent = 0
+    puts indent
+    indent.times { str << "\t" } ; str << "class #{name}"
+    str << " < #{parent}" if parent
+    indent.times { str << "\t" } ; str << "\n"
+    indent.times { str << "\t" } ; str << "\tinclude #{included_module.name}" if included_module
+    str << "\n"
+    indent.times { str << "\t" } ; str << "end\n"
   end
 
 end
@@ -105,4 +107,8 @@ module Foo
   end
 end
 
-m.generate
+str = ''
+m.generate  str
+puts str
+
+#eval str
