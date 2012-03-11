@@ -62,6 +62,26 @@ describe Flounder::ModuleGenerator do
     eval str
   end
 
-  it 'should create a module in  module'
+  it 'should create a module in  module' do
+
+    im = Flounder::ModuleGenerator.new do |ctx|
+      ctx.name = 'InnerModule'
+      ctx.elements = [TestGenerator.new]
+    end
+    m = Flounder::ModuleGenerator.new do |ctx|
+      ctx.name = 'SomeName'
+      ctx.elements = [im]
+    end
+    m.should_not eq nil
+    str = ''
+    m.generate str
+    str.include?('module').should eq true
+    str.include?('SomeName').should eq true
+    str.include?('end').should eq true
+    str.include?('foo blech').should eq true
+    str.include?('puts blech').should eq true
+    str.include?('InnerModule').should eq true
+    eval str
+  end
   
 end
