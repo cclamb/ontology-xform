@@ -10,7 +10,6 @@ class TestGenerator
   end
 end
 
-
 describe Flounder::ModuleGenerator do
 
   it 'should be creatable without a context' do
@@ -43,7 +42,7 @@ describe Flounder::ModuleGenerator do
     str.include?('module').should eq true
     str.include?('SomeName').should eq true
     str.include?('end').should eq true
-    eval str
+    Object.new.instance_eval str
   end
 
   it 'should create a module with content' do
@@ -59,7 +58,7 @@ describe Flounder::ModuleGenerator do
     str.include?('end').should eq true
     str.include?('foo blech').should eq true
     str.include?('puts blech').should eq true
-    eval str
+    Object.new.instance_eval str
   end
 
   it 'should create a module in  module' do
@@ -81,7 +80,7 @@ describe Flounder::ModuleGenerator do
     str.include?('foo blech').should eq true
     str.include?('puts blech').should eq true
     str.include?('InnerModule').should eq true
-    eval str
+    Object.new.instance_eval str
   end
   
 end
