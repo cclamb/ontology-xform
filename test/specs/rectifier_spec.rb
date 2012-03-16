@@ -47,7 +47,12 @@ describe Flounder::Rectifier do
       od = RectifierSpec::merge simple_test[:filename]
       test_ctx = RectifierSpec::SimpleTester.new
       test_ctx.instance_eval od
-      test_ctx.instance_exec { test }
+
+      b = Proc.new {}
+      eval od, b.binding
+      s = SomeMod::Subject.new
+      s.should_not eq nil
+
     end
 
   end
@@ -56,7 +61,9 @@ describe Flounder::Rectifier do
 
     it 'should be able to merge the structures and elements' do
       od = RectifierSpec::merge complex_test[:filename]
-      Object.new.instance_eval od
+      od.should_not eq nil
+      eval od
+      #Object.new.instance_eval od
     end
 
   end
@@ -65,7 +72,9 @@ describe Flounder::Rectifier do
 
     it 'should be able to merge the structures and elements' do
       od = RectifierSpec::merge complex_test_2[:filename]
-      Object.new.instance_eval od
+      od.should_not eq nil
+      eval od
+      #Object.new.instance_eval od
     end
 
   end
