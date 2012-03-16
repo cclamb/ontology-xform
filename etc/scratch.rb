@@ -4,7 +4,7 @@ require_relative '../lib/flounder/class_generator'
 
 include Flounder
 
-filename = 'simple-ontology.owl'
+filename = 'Ontology.owl'#'simple-ontology.owl'
 
 p = Parser.new
 xml = File.read filename
@@ -45,6 +45,6 @@ str = str.gsub! /#|\/|:|\./, '_'
 
 puts str
 
-Object.new.instance_eval str
+#Object.new.instance_eval str
 
 
