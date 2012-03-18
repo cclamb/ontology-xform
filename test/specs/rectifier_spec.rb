@@ -4,35 +4,27 @@ require_relative '../../lib/flounder/parser'
 require_relative '../../lib/flounder/rectifier'
 
 simple_test = {
-  :filename => 'etc/simple-ontology.owl',
+  :filename => 'etc/simple-ontology.owl'
 }
 
 complex_test = {
-  :filename => 'etc/Ontology.owl',
+  :filename => 'etc/Ontology.owl'
 }
 
 complex_test_2 = {
-  :filename => 'etc/Ontology2.owl',
+  :filename => 'etc/Ontology2.owl'
 }
 
-module RectifierSpec
 
-  def RectifierSpec.merge filename
-    parser = Flounder::Parser.new
-    xml = File.read filename
-    results = parser.parse xml
-    rectifier = Flounder::Rectifier.new
-    rectifier.rectify results[:elements], results[:structure]
-  end
-
-  class SimpleTester
-    def test
-      s = SomeMod::Subject.new
-      s.should_not eq nil
-    end
-  end
-
+def merge filename
+  parser = Flounder::Parser.new
+  xml = File.read filename
+  results = parser.parse xml
+  rectifier = Flounder::Rectifier.new
+  rectifier.rectify results[:elements], results[:structure]
 end
+
+
 
 describe Flounder::Rectifier do
 
@@ -44,15 +36,9 @@ describe Flounder::Rectifier do
   context 'with a simple ontology' do
 
     it 'should be able to merge the structures and elements' do
-      od = RectifierSpec::merge simple_test[:filename]
-      test_ctx = RectifierSpec::SimpleTester.new
-      test_ctx.instance_eval od
-
-      b = Proc.new {}
-      eval od, b.binding
-      s = SomeMod::Subject.new
-      s.should_not eq nil
-
+      od = merge simple_test[:filename]
+      # puts od
+      Object.new.instance_eval od
     end
 
   end
@@ -60,10 +46,9 @@ describe Flounder::Rectifier do
   context 'with a complex Ontology (Ontology.owl)' do
 
     it 'should be able to merge the structures and elements' do
-      od = RectifierSpec::merge complex_test[:filename]
+      od = merge complex_test[:filename]
       od.should_not eq nil
-      eval od
-      #Object.new.instance_eval od
+      Object.new.instance_eval od
     end
 
   end
@@ -71,10 +56,9 @@ describe Flounder::Rectifier do
   context 'with a complex Ontology (Ontology2.owl)' do
 
     it 'should be able to merge the structures and elements' do
-      od = RectifierSpec::merge complex_test_2[:filename]
+      od = merge complex_test_2[:filename]
       od.should_not eq nil
-      eval od
-      #Object.new.instance_eval od
+      Object.new.instance_eval od
     end
 
   end

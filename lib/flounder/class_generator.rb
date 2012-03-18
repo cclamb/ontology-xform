@@ -2,10 +2,11 @@ module Flounder
 
   class ClassGenerator
 
-    attr_accessor :name, :parent, :mixin
+    attr_accessor :name, :parent, :mixin, :namespace
 
     def initialize
       self.name = ''
+      self.namespace = ''
       self.parent = nil
       self.mixin = nil
       yield self if block_given?

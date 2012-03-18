@@ -32,8 +32,6 @@ module Flounder
         if sub_elements.size > 0
           name = full_type_name.to_sym
           parent = sub_elements[0].attribute('resource').to_s.to_sym
-          #val = {:name => name, :parent => parent }
-          #@structure.push val
           @structure[name] = parent
         end
       end
