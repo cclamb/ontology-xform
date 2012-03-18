@@ -58,7 +58,19 @@ describe Flounder::MethodGenerator do
     test_method_generator m, :name => '<=>', :args => ['obj']
   end
 
-  it 'should allow for instruction inclusion'
-  it 'should accept a variety of templated instructions'
+  it 'should allow for instruction inclusion' do
+
+    instructions = [
+      "x = 1",
+      "puts \"x is : \#\{x\}\""
+    ]
+
+    m = Flounder::MethodGenerator.new do |ctx|
+      ctx.name = '<=>'
+      ctx.args = ['obj']
+      ctx.instructions = instructions
+    end
+    test_method_generator m, :name => '<=>', :args => ['obj']
+  end
   
 end
