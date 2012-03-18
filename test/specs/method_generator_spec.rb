@@ -70,6 +70,7 @@ describe Flounder::MethodGenerator do
       ctx.args = ['obj']
       ctx.instructions = instructions
     end
+    
     test_method_generator m, :name => '<=>', :args => ['obj']
   end
   
