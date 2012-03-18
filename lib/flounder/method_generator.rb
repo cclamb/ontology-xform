@@ -17,7 +17,7 @@ module Flounder
         str << ' '
         for idx in 0..(args.size - 1)
           str << "#{args[idx]}"
-          str << ', ' unless idx == args.size - 1
+          str << ', ' unless idx >= args.size - 1
         end
       end
       str << "\n"
