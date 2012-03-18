@@ -21,13 +21,14 @@ module Flounder
       end
     end
 
-    def generate str, indent = 0
+    def generate str = '', indent = 0
       indent.times { str << "\t" } ; str << "class #{symbolize name}"
       str << " < #{symbolize parent.name}" if parent
       indent.times { str << "\t" } ; str << "\n"
       indent.times { str << "\t" } ; str << "\tinclude #{mixin.name}" if mixin
       str << "\n"
       indent.times { str << "\t" } ; str << "end\n"
+      str
     end
 
   end
