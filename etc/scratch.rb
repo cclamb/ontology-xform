@@ -22,13 +22,13 @@ elements.each do |k, v|
     ctx.name = k.to_s
     #ctx.parent = v.to_s unless v == nil
   end
-  module_elements[k.to_sym] = clazz
+  module_elements[k] = clazz
 end
 
 def find_parent clazz, catalog, structure
   return [] if clazz == nil
   #puts clazz.name
-  parent_name = structure[clazz.name.to_sym]
+  parent_name = structure[clazz.name]
   #puts "pname : #{parent_name}"
   return [] if parent_name == nil
   parent = catalog[parent_name]
