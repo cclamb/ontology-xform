@@ -12,4 +12,6 @@ r = p.parse xml
 
 elements = r[:elements]
 
-puts elements
+elements.each do |e|
+  puts "===\n#{e}\n==="
+end
