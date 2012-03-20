@@ -3,7 +3,7 @@ require_relative '../lib/flounder/parser'
 include Flounder
 
 #filename = 'Ontology2.owl'
-filename = 'Ontology2.owl'
+filename = 'Ontology.owl'
 #filename = 'simple-ontology.owl'
 
 p = Parser.new
