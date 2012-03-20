@@ -49,10 +49,11 @@ module Flounder
         @elements[full_type_name] = attribs
       end
 
-      def get_short_name str
-        parts = str.split '#'
-        parts.last
-      end
+    end
+
+    def get_short_name str
+      parts = str.split '#'
+      parts.last
     end
     
   end
