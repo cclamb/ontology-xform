@@ -21,6 +21,14 @@ module Flounder
       else
         @name = name
       end
+      unless @name == nil
+        puts @name
+        new_name = @name.gsub! /#|\/|:|\./, '_'
+        puts new_name
+        @name == new_name unless new_name == nil || new_name == ''
+        puts @name
+      end
+      @name
     end
 
     def generate str = '', indent = 0
@@ -39,7 +47,7 @@ module Flounder
         if mixin
           str << ", Comparable\n"
         else
-          indent.times { str << "\t" } ; str << "\tinclude Comparable\n" 
+          indent.times { str << "\t" } ; str << "include Comparable\n" 
         end
 
 

@@ -52,7 +52,7 @@ module Flounder
         m.generate str
       end
 
-      str.gsub! /#|\/|:|\./, '_'
+      #str.gsub! /#|\/|:|\./, '_'
       puts str
       str
     end
