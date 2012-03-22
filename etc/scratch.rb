@@ -63,4 +63,55 @@ elements.each do |e|
 
 end
 
-orderings.each { |k,v| puts "#{k} => #{v}\n\n" }
+m_str = ''
+orderings.each do |k,v| 
+  arr = v.to_s.gsub! /"/, ''
+  m_str << "\tdef <=> obj\n"
+  m_str << "\t\tordering = #{arr}\n"
+  m_str << "\t\tc_idx = ordering.index self\n"
+  m_str << "\t\to_idx = ordering.index obj\n"
+  m_str << "\t\treturn nil if c_idx == nil || o_idx == nil\n"
+  m_str << "\t\tc_idx < o_idx ? -1 : 1\n"
+  m_str << "\tend\n"
+end
+
+#puts m_str
+
+str = ''
+elements.each do |e|
+
+  clazz_name = get_class_name e
+
+  str << "class #{clazz_name}\n"
+
+unless e[1][:properties].size == 0
+  str << "\tinclude Comparable\n" 
+
+  ordering = orderings[clazz_name]
+  arr = ordering.to_s.gsub! /"/, ''
+
+  str << "\tdef <=> obj\n"
+  str << "\t\tordering = #{arr}\n"
+  str << "\t\tc_idx = ordering.index self.class\n"
+  str << "\t\to_idx = ordering.index obj.class\n"
+  str << "\t\treturn nil if c_idx == nil || o_idx == nil\n"
+  str << "\t\tc_idx < o_idx ? -1 : 1\n"
+  str << "\tend\n"
+end
+
+  str << "end\n\n" 
+end
+
+puts str
+
+eval str
+
+ts = Top_Secret.new
+s = Secret.new
+u = Unclassified.new
+
+puts u < s
+puts s < u
+puts ts < u
+puts u < s
+puts u < ts
