@@ -1,5 +1,6 @@
 require_relative 'class_generator'
 require_relative 'module_generator'
+require_relative 'comparator_generator'
 
 require 'set'
 
@@ -8,12 +9,70 @@ module Flounder
   class Rectifier
 
     def rectify elements, structure
+
+      orderings = {}
+      elements.each do |e|
+        clazz_name = e[0].split('#').last
+
+        e[1][:properties].each do |p|
+          property_name = p[:property]
+          object_name = p[:object]
+
+          active_ordering = orderings[clazz_name] || orderings[object_name] || []
+
+          has_clazz = active_ordering.include? clazz_name
+          has_object = active_ordering.include? object_name
+
+          if property_name == 'isLowerThan'
+
+            if !has_clazz && !has_object
+              active_ordering.push clazz_name
+              active_ordering.push object_name
+            elsif has_clazz && !has_object
+              clazz_idx = active_ordering.index clazz_name
+              active_ordering.insert clazz_idx + 1, object_name
+            elsif !has_clazz && has_object
+              object_idx = active_ordering.index object_name
+              active_ordering.insert object_idx, clazz_name
+            end 
+
+          elsif property_name == 'isGreaterThan'
+
+            if !has_clazz && !has_object
+              active_ordering.push object_name
+              active_ordering.push clazz_name
+            elsif has_clazz && !has_object
+              clazz_idx = active_ordering.index clazz_name
+              active_ordering.insert clazz_idx, object_name
+            elsif !has_clazz && has_object
+              object_idx = active_ordering.index object_name
+              active_ordering.insert object_idx + 1, clazz_name
+            end 
+
+          end
+
+          orderings[clazz_name] = active_ordering if orderings[clazz_name] == nil
+          orderings[object_name] =  active_ordering if orderings[object_name] == nil
+        end
+
+      end
+
       module_names = Set.new
       module_elements = {}
       elements.keys.each do |k|
+
+        ordering = orderings[k.split('#').last]
+
+        methods = []
+        unless ordering == nil 
+          cg = Flounder::ComparatorGenerator.new ordering
+          methods.push cg
+        end
+
         module_elements[k] = create_class_generator k, \
           module_names, \
-          elements[k][:properties]
+          methods, \
+          methods.empty? ? nil : 'Comparable'
       end
 
       new_elements = []
@@ -25,7 +84,6 @@ module Flounder
           new_elements.push x unless new_elements.include? x
         end
       end
-
 
       module_members = {:base => []}
       module_names.each do |module_name|
@@ -52,8 +110,6 @@ module Flounder
         m.generate str
       end
 
-      #str.gsub! /#|\/|:|\./, '_'
-      puts str
       str
     end
 
@@ -66,29 +122,33 @@ module Flounder
       end
     end
 
-    def create_class_generator name, module_names, properties = nil
+    def create_class_generator name, module_names, methods = [], mixin = nil
       class_name = name.to_s.split '#'
       module_names.add class_name[0] if class_name.size > 1
 
       clazz = ClassGenerator.new do |ctx|
         ctx.name = class_name.last
-        ctx.properties = properties
         ctx.namespace = class_name[0] if class_name.size > 1
+        ctx.methods = methods
+        ctx.mixin = mixin unless mixin == nil
       end
       clazz
     end
 
     def find_parent clazz, catalog, structure
       return [] if clazz == nil
-      #puts clazz.name
+
       qualified_name = clazz.namespace == '' \
         ? clazz.name \
         : clazz.namespace + '#' + clazz.name
+
       parent_name = structure[qualified_name]
-      #puts "pname : #{parent_name}"
+
       return [] if parent_name == nil
+
       parent = catalog[parent_name]
       clazz.parent = parent
+
       return [parent] + find_parent(parent, catalog, structure)
     end
 
