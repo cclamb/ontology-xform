@@ -11,7 +11,9 @@ module Flounder
       module_names = Set.new
       module_elements = {}
       elements.keys.each do |k|
-        module_elements[k] = create_class_generator k, module_names
+        module_elements[k] = create_class_generator k, \
+          module_names, \
+          elements[k][:properties]
       end
 
       new_elements = []
@@ -51,6 +53,7 @@ module Flounder
       end
 
       str.gsub! /#|\/|:|\./, '_'
+      puts str
       str
     end
 
@@ -63,12 +66,13 @@ module Flounder
       end
     end
 
-    def create_class_generator name, module_names
+    def create_class_generator name, module_names, properties = nil
       class_name = name.to_s.split '#'
       module_names.add class_name[0] if class_name.size > 1
 
       clazz = ClassGenerator.new do |ctx|
         ctx.name = class_name.last
+        ctx.properties = properties
         ctx.namespace = class_name[0] if class_name.size > 1
       end
       clazz
