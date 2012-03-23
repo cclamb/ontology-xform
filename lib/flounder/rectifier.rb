@@ -147,6 +147,7 @@ module Flounder
       return [] if parent_name == nil
 
       parent = catalog[parent_name]
+
       clazz.parent = parent
 
       return [parent] + find_parent(parent, catalog, structure)

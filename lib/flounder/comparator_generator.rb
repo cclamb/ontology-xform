@@ -11,7 +11,13 @@ module Flounder
       a.push "c_idx = ordering.index self_short_name"
       a.push "o_idx = ordering.index obj_short_name"
       a.push "return nil if c_idx == nil || o_idx == nil"
-      a.push "c_idx < o_idx ? -1 : 1"
+      a.push "if c_idx < o_idx"
+      a.push "\treturn -1"
+      a.push "elsif c_idx > o_idx"
+      a.push "\treturn 1"
+      a.push "else"
+      a.push "\treturn 0"
+      a.push "end"
       super &block
       self.name = '<=>'
       self.args = ['obj']

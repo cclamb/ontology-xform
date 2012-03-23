@@ -19,6 +19,7 @@ module Flounder
     def generate str = '', indent = 0
 
       indent.times { str << "\t" } ; str << "class #{symbolize name}"
+
       str << " < #{symbolize parent.name}" if parent
 
       indent.times { str << "\t" } ; str << "\n"
