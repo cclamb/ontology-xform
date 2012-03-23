@@ -26,9 +26,10 @@ module Flounder
 
       mixin_name = mixin.class == ClassGenerator ? mixin.name : mixin.to_s
 
-      indent.times { str << "\t" }; str << "\tinclude #{mixin_name}" if mixin
-
-      str << "\n"
+      if mixin != nil
+        indent.times { str << "\t" }
+        str << "\tinclude #{mixin_name}\n"
+      end
 
       methods.each do |method|
         method.generate str, indent + 1

@@ -1,18 +1,58 @@
 module Http___www_semanticweb_org_ontologies_2012_1_Ontology_owl
 	class Context	
-	
+			def == obj
+				self.class == obj.class && self.value == obj.value
+			end
+			def eql? obj
+				self == obj
+			end
+			def hash
+				self.name.hash
+			end
 	end
 	class Environment < Context	
-	
+			def == obj
+				self.class == obj.class && self.value == obj.value
+			end
+			def eql? obj
+				self == obj
+			end
+			def hash
+				self.name.hash
+			end
 	end
 	class Device < Environment	
-	
+			def == obj
+				self.class == obj.class && self.value == obj.value
+			end
+			def eql? obj
+				self == obj
+			end
+			def hash
+				self.name.hash
+			end
 	end
 	class Domain	
-	
+			def == obj
+				self.class == obj.class && self.value == obj.value
+			end
+			def eql? obj
+				self == obj
+			end
+			def hash
+				self.name.hash
+			end
 	end
 	class SecurityDomain < Domain	
-	
+			def == obj
+				self.class == obj.class && self.value == obj.value
+			end
+			def eql? obj
+				self == obj
+			end
+			def hash
+				self.name.hash
+			end
 	end
 	class JWICS < SecurityDomain	
 		include Comparable
@@ -69,16 +109,48 @@ module Http___www_semanticweb_org_ontologies_2012_1_Ontology_owl
 		end
 	end
 	class OS < Environment	
-	
+			def == obj
+				self.class == obj.class && self.value == obj.value
+			end
+			def eql? obj
+				self == obj
+			end
+			def hash
+				self.name.hash
+			end
 	end
 	class Subject < Context	
-	
+			def == obj
+				self.class == obj.class && self.value == obj.value
+			end
+			def eql? obj
+				self == obj
+			end
+			def hash
+				self.name.hash
+			end
 	end
 	class Project < Subject	
-	
+			def == obj
+				self.class == obj.class && self.value == obj.value
+			end
+			def eql? obj
+				self == obj
+			end
+			def hash
+				self.name.hash
+			end
 	end
 	class Role < Subject	
-	
+			def == obj
+				self.class == obj.class && self.value == obj.value
+			end
+			def eql? obj
+				self == obj
+			end
+			def hash
+				self.name.hash
+			end
 	end
 	class SIPRNet < SecurityDomain	
 		include Comparable
@@ -99,7 +171,15 @@ module Http___www_semanticweb_org_ontologies_2012_1_Ontology_owl
 		end
 	end
 	class SecurityClassification < Domain	
-	
+			def == obj
+				self.class == obj.class && self.value == obj.value
+			end
+			def eql? obj
+				self == obj
+			end
+			def hash
+				self.name.hash
+			end
 	end
 	class Secret < SecurityClassification	
 		include Comparable

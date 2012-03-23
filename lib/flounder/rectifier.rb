@@ -1,6 +1,7 @@
 require_relative 'class_generator'
 require_relative 'module_generator'
 require_relative 'comparator_generator'
+require_relative 'equality_generator'
 
 require 'set'
 
@@ -64,15 +65,18 @@ module Flounder
         ordering = orderings[k.split('#').last]
 
         methods = []
-        unless ordering == nil 
-          cg = Flounder::ComparatorGenerator.new ordering
-          methods.push cg
+        std_mixin_name = nil
+        if ordering != nil 
+          methods.push Flounder::ComparatorGenerator.new ordering
+          std_mixin_name = 'Comparable'
+        else
+          methods.push Flounder::EqualityGenerator.new
         end
 
         module_elements[k] = create_class_generator k, \
           module_names, \
           methods, \
-          methods.empty? ? nil : 'Comparable'
+          std_mixin_name
       end
 
       new_elements = []
