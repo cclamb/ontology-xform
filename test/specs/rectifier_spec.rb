@@ -91,9 +91,6 @@ describe Flounder::Rectifier do
       Object.new.instance_eval od
     end
 
-    it 'should be able to import new namespaced instances for creation'
-    it 'should be able to import comparable instances'
-
   end
 
 end
