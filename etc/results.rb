@@ -1,5 +1,6 @@
 module Http___www_semanticweb_org_ontologies_2012_1_Ontology_owl
 	class Context	
+			attr_accessor :value
 			def == obj
 				self.class == obj.class && self.value == obj.value
 			end
@@ -7,10 +8,11 @@ module Http___www_semanticweb_org_ontologies_2012_1_Ontology_owl
 				self == obj
 			end
 			def hash
-				self.name.hash
+				self.value.hash
 			end
 	end
 	class Environment < Context	
+			attr_accessor :value
 			def == obj
 				self.class == obj.class && self.value == obj.value
 			end
@@ -18,10 +20,11 @@ module Http___www_semanticweb_org_ontologies_2012_1_Ontology_owl
 				self == obj
 			end
 			def hash
-				self.name.hash
+				self.value.hash
 			end
 	end
 	class Device < Environment	
+			attr_accessor :value
 			def == obj
 				self.class == obj.class && self.value == obj.value
 			end
@@ -29,10 +32,11 @@ module Http___www_semanticweb_org_ontologies_2012_1_Ontology_owl
 				self == obj
 			end
 			def hash
-				self.name.hash
+				self.value.hash
 			end
 	end
 	class Domain	
+			attr_accessor :value
 			def == obj
 				self.class == obj.class && self.value == obj.value
 			end
@@ -40,10 +44,11 @@ module Http___www_semanticweb_org_ontologies_2012_1_Ontology_owl
 				self == obj
 			end
 			def hash
-				self.name.hash
+				self.value.hash
 			end
 	end
 	class SecurityDomain < Domain	
+			attr_accessor :value
 			def == obj
 				self.class == obj.class && self.value == obj.value
 			end
@@ -51,7 +56,7 @@ module Http___www_semanticweb_org_ontologies_2012_1_Ontology_owl
 				self == obj
 			end
 			def hash
-				self.name.hash
+				self.value.hash
 			end
 	end
 	class JWICS < SecurityDomain	
@@ -109,6 +114,7 @@ module Http___www_semanticweb_org_ontologies_2012_1_Ontology_owl
 		end
 	end
 	class OS < Environment	
+			attr_accessor :value
 			def == obj
 				self.class == obj.class && self.value == obj.value
 			end
@@ -116,10 +122,11 @@ module Http___www_semanticweb_org_ontologies_2012_1_Ontology_owl
 				self == obj
 			end
 			def hash
-				self.name.hash
+				self.value.hash
 			end
 	end
 	class Subject < Context	
+			attr_accessor :value
 			def == obj
 				self.class == obj.class && self.value == obj.value
 			end
@@ -127,10 +134,11 @@ module Http___www_semanticweb_org_ontologies_2012_1_Ontology_owl
 				self == obj
 			end
 			def hash
-				self.name.hash
+				self.value.hash
 			end
 	end
 	class Project < Subject	
+			attr_accessor :value
 			def == obj
 				self.class == obj.class && self.value == obj.value
 			end
@@ -138,10 +146,11 @@ module Http___www_semanticweb_org_ontologies_2012_1_Ontology_owl
 				self == obj
 			end
 			def hash
-				self.name.hash
+				self.value.hash
 			end
 	end
 	class Role < Subject	
+			attr_accessor :value
 			def == obj
 				self.class == obj.class && self.value == obj.value
 			end
@@ -149,7 +158,7 @@ module Http___www_semanticweb_org_ontologies_2012_1_Ontology_owl
 				self == obj
 			end
 			def hash
-				self.name.hash
+				self.value.hash
 			end
 	end
 	class SIPRNet < SecurityDomain	
@@ -171,6 +180,7 @@ module Http___www_semanticweb_org_ontologies_2012_1_Ontology_owl
 		end
 	end
 	class SecurityClassification < Domain	
+			attr_accessor :value
 			def == obj
 				self.class == obj.class && self.value == obj.value
 			end
@@ -178,7 +188,7 @@ module Http___www_semanticweb_org_ontologies_2012_1_Ontology_owl
 				self == obj
 			end
 			def hash
-				self.name.hash
+				self.value.hash
 			end
 	end
 	class Secret < SecurityClassification	
