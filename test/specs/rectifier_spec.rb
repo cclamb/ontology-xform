@@ -83,6 +83,10 @@ describe Flounder::Rectifier do
 
   end
 
+  context 'with a complex ontology and no class hierarchy (Ontology4.owl)' do
+    it 'should load the ontology and generate classes'
+  end
+
   context 'with a complex Ontology (Ontology2.owl)' do
 
     it 'should be able to merge the structures and elements' do

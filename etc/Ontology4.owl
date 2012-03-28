@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#"
+     xml:base="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#greater_than -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#greater_than">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#less_than -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#less_than">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <owl:inverseOf rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#greater_than"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Device -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Device"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#OS -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#OS"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Project -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Project"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Role -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Role"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Security_Classificaton -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Security_Classificaton"/>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Security_Domain -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Security_Domain"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Confidential -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Confidential">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Security_Classificaton"/>
+        <greater_than rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Unclassified"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#JWICS -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#JWICS">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Security_Domain"/>
+        <greater_than rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#SIPRNet"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#NIPRNet -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#NIPRNet">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Security_Domain"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#NSANet -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#NSANet">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Security_Domain"/>
+        <greater_than rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#JWICS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#SIPRNet -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#SIPRNet">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Security_Domain"/>
+        <greater_than rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#NIPRNet"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Secret -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Secret">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Security_Classificaton"/>
+        <greater_than rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Confidential"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#TopSecret -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#TopSecret">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Security_Classificaton"/>
+        <greater_than rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Secret"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#TopSecret-SCI -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#TopSecret-SCI">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Security_Classificaton"/>
+        <greater_than rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#TopSecret"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Unclassified -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Unclassified">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/2012/1/Ontology.owl#Security_Classificaton"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.5.1912) http://owlapi.sourceforge.net -->
+

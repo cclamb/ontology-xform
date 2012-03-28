@@ -17,7 +17,7 @@ module Flounder
       @instructions.push "\tself == obj"
       @instructions.push "end"
       @instructions.push "def hash"
-      @instructions.push "\tself.name.hash"
+      @instructions.push "\tself.#{equality_method}.hash"
       @instructions.push "end"
     end
 

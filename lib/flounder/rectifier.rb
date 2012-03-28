@@ -2,6 +2,7 @@ require_relative 'class_generator'
 require_relative 'module_generator'
 require_relative 'comparator_generator'
 require_relative 'equality_generator'
+require_relative 'value_property_generator'
 
 require 'set'
 
@@ -70,6 +71,7 @@ module Flounder
           methods.push Flounder::ComparatorGenerator.new ordering
           std_mixin_name = 'Comparable'
         else
+          methods.push Flounder::ValuePropertyGenerator.new
           methods.push Flounder::EqualityGenerator.new
         end
 
@@ -87,6 +89,10 @@ module Flounder
         elems.reverse.each do |x|
           new_elements.push x unless new_elements.include? x
         end
+      end
+
+      module_elements.each do |k,v|
+        new_elements.push v unless new_elements.include? v
       end
 
       module_members = {:base => []}

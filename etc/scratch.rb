@@ -3,9 +3,9 @@ require_relative '../lib/flounder/rectifier'
 
 include Flounder
 
-#filename = 'Ontology2.owl'
-filename = 'Ontology.owl'
-#filename = 'simple-ontology.owl'
+# filename = 'Ontology2.owl'
+filename = 'Ontology4.owl'
+# filename = 'simple-ontology.owl'
 
 p = Parser.new
 xml = File.read filename
