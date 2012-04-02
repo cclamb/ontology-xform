@@ -4,15 +4,15 @@ require_relative '../lib/flounder/rectifier'
 include Flounder
 
 # filename = 'Ontology2.owl'
-filename = 'Ontology4.owl'
+# filename = 'Ontology4.owl'
 # filename = 'simple-ontology.owl'
 
-p = Parser.new
-xml = File.read filename
-r = p.parse xml
-rectifier = Rectifier.new
-od = rectifier.rectify r[:elements], r[:structure]
-puts od
+# p = Parser.new
+# xml = File.read filename
+# r = p.parse xml
+# rectifier = Rectifier.new
+# od = rectifier.rectify r[:elements], r[:structure]
+# puts od
 
 # class Foo
 #   attr_accessor :name
